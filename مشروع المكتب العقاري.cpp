@@ -68,7 +68,7 @@ bool employeeLogin() {
         attempts--;
         cout << "\033[36m The password is incorrect .you have " << attempts << " attempts remaining .\n";
     }
-    cout << "\033[36m We apologize .you can not proceed as an employee.\n";
+    cout << "\033[36m We apologize .you cannot proceed as an employee.\n";
     return false;
 }
 
