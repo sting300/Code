@@ -2,7 +2,7 @@
 #include <string>
 #include <limits>
 using namespace std;
-// تعريف كائن العقار
+
 struct Property {
     int id;
     string location;
@@ -10,13 +10,12 @@ struct Property {
     int price;  
     int area;   
     int floors; 
-    bool isForSale; // true: للبيع, false: للإيجار
+    bool isForSale;
     Property* next;
 };
-// رأس القائمة المرتبطة
+
 Property* head = NULL;
 
-// عرض رسالة ترحيبية
 void welcome() {
 	cout<<"          _____________________________________                            \n";
 	cout<<"         /                                   /|                            \n";
@@ -40,7 +39,6 @@ void welcome() {
    
 }
 
-//التحقق من إدخال الأعداد الصحيحة
 void checknumber(int &input) {
 	
 	while(true)
@@ -56,7 +54,6 @@ void checknumber(int &input) {
 	}
 }
 
- //تسجيل دخول الموظف
 bool employeeLogin() {
     string password;
     int attempts = 3;
@@ -71,17 +68,15 @@ bool employeeLogin() {
         attempts--;
         cout << "\033[36m The password is incorrect .you have " << attempts << " attempts remaining .\n";
     }
-    cout << "\033[36m We apologize .you cannot proceed as an employee.\n";
+    cout << "\033[36m We apologize .you can not proceed as an employee.\n";
     return false;
 }
 
-// إضافة عقار جديد
 void addProperty(bool forSale) {
     Property* newProperty = new Property();
     int id = 1;
     Property* temp = head;
 
-    // تحديد ID العقار الجديد
     while (temp != NULL) {
         id = temp->id + 1;
         temp = temp->next;
@@ -117,7 +112,6 @@ void addProperty(bool forSale) {
         cout << "\033[36m \n The property has been added successfully .\n";
 }
 
-// تعديل عقار
 void editProperty() {
     int id;
     cout << "\033[36m Enter the property number to edit : \033[31m  ";
@@ -156,10 +150,9 @@ void editProperty() {
         }
         temp = temp->next;
     }
-    cout << "\033[36m The property doesnot exist .\n";
+    cout << "\033[36m The property does not exist .\n";
 }
 
-// حذف عقار
  void deleteProperty() {
     int id;
     cout << "\033[36m Enter the property number to delete : \033[31m ";
@@ -185,7 +178,6 @@ void editProperty() {
     cout << "\033[36m The property does not exist .\n";
 }
 
-// شراء أو تأجير عقار
 void purchaseOrRent(){
 	int id  , phone;
     checknumber(id);
@@ -222,7 +214,6 @@ void purchaseOrRent(){
     cout << "\033[32m The property does not exist .\n";
 }
 
-//عرض العقارات للعميل 
  void displayclient() {
  	
     Property* temp = head;
@@ -245,7 +236,6 @@ void purchaseOrRent(){
 	}
 }
 
-//عرض العقارات للموظف 
  void displayemployee() {
     Property* temp = head;
     
@@ -258,7 +248,6 @@ void purchaseOrRent(){
     }
 	}
 
-// تعبئة البيانات الأولية
  void seedData() {
     head = new Property{1, "Al-Mukalla", "house", 200000, 250, 1, true, NULL};
     head->next = new Property{2, "Ghayl-bawazir", "villa", 500000, 350, 2, true, NULL};
@@ -269,7 +258,6 @@ void purchaseOrRent(){
    
  }
 
-// القائمة الرئيسي
 void mainMenu() {
     while (true) {
     	int f;
@@ -343,13 +331,10 @@ void mainMenu() {
     }
 }
 
-// الدالة الرئيسية
 int main() {
 	
     seedData();
     system("color e6");
-    //system("color 50");
     welcome();
     mainMenu();
-   // return 0;
 }
